@@ -1,0 +1,216 @@
+
+
+
+def change(lst):
+    if len(lst) >= 2:
+        lst[0], lst[-1] = lst[-1], lst[0]
+    return lst
+my_list = [1, 2, 3, 4, 5]
+changed_list = change(my_list)
+print(changed_list)
+
+original_list = [1, 2, 3, 4, 5]
+reversed_list = original_list [::-1] 
+print (reversed_list)
+
+def to_list(*args):
+    return list(args)
+my_list = to_list(1, 2, 3, "a", "b", "c")
+print(my_list)
+
+def useless(s):
+    max_number = max(s)
+    result = max_number / len(s)
+    return result
+my_list = [1, 5, 45, 89, 503]
+result = useless(my_list)
+print(result)
+
+def list_sort(lst):
+    sorted_list = sorted(lst, key=lambda x: abs(x), reverse=True)
+    return sorted_list
+my_list = [-45, 9, -75, 1, -106, 80]
+sorted_list = list_sort(my_list)
+print(sorted_list)
+
+def to_float(num):
+    if isinstance(num, (int, float)):
+        return float(num)
+    else:
+        return "Невозможно преобразовать"
+result1 = to_float(100)
+print(result1)
+result2 = to_float(67)
+print(result2)
+result3 = to_float("число")
+print(result3)
+
+def avg_5(a, b, c, d):
+    average = (a + b + c + d) / 4
+    rounded_average = round(average, 5)
+    return rounded_average
+result = avg_5(9.566, 3.45456, 6.76, 34)
+print(result)
+
+V = 34543
+r = ((3 * V / (4 * 3.14)) ** (1/3))
+print(r)
+ 
+def dislike_6(a):
+    if isinstance(a, (int, float)) and a == 6:
+        return "Только не 6!"
+    else:
+        return True
+
+def to_dict(lst):
+    return {elem: elem for elem in lst}
+my_list = [1, 2, 3, "книга", "лист"]
+result = to_dict(my_list)
+print(result)
+
+def combine_coordinates(x, y):
+    coordinates = []
+    for i in range(len(x)):
+        coordinates.append((x[i], y[i]))
+    return coordinates
+x = [2, 4, 5, 7]
+y = [4, 8, 10, 14]
+result = combine_coordinates(x, y)
+print(result)
+
+def greet_guests(guests):
+    for guest in guests:
+        print("Привет,", guest)
+guests = ["Рома", "Виталий", "Влад", "Миша"]
+greet_guests(guests)
+
+def has_duplicate_letters(word):
+    for i in range(len(word) - 1):
+        if word[i] == word[i + 1]:
+            return True
+    return False
+word = "территория"
+result = has_duplicate_letters(word)
+print(result)
+
+def remove_extra_spaces(string):
+    words = string.split() 
+    cleaned_string = ' '.join(words) 
+    return cleaned_string
+string = "  ёжик  гуляет  в  лесу   "
+result = remove_extra_spaces(string)
+print(result)
+
+import math
+def calculate_water_mass(radius, height):
+    density = 1000 
+    volume = math.pi * radius ** 2 * height  
+    mass = density * volume / 1000  
+    return round(mass, 2)
+radius = 5  
+height = 30  
+water_mass = calculate_water_mass(radius, height)
+print(water_mass)
+
+def multiply_numbers(numbers):
+    result = 1
+    for num in numbers:
+        result *= eval(num)
+    return result
+numbers = ["13", "45", "67", "89", "120"]
+result = multiply_numbers(numbers)
+print(result)
+
+def calculate_total_volume(h1, l1, w1, h2, l2, w2):
+    volume1 = h1 * l1 * w1
+    volume2 = h2 * l2 * w2
+    total_volume = volume1 + volume2
+    return total_volume
+h1 = 5
+l1 = 8
+w1 = 6
+h2 = 7
+l2 = 10
+w2 = 8
+total_volume = calculate_total_volume(h1, l1, w1, h2, l2, w2)
+print(total_volume)
+
+def calculate_cumulative_sum(numbers):
+    cumulative_sum = []
+    total_sum = 0
+    for num in numbers:
+        total_sum += num
+        cumulative_sum.append(total_sum)
+    return cumulative_sum
+numbers = [10, 18, 20]
+result = calculate_cumulative_sum(numbers)
+print(result)
+
+def is_ascending(numbers):
+    for i in range(1, len(numbers)):
+        if numbers[i] <= numbers[i-1]:
+            return False
+    return True
+numbers = [3, 5, 7, 10]
+result = is_ascending(numbers)
+print(result)
+
+def find_median(numbers):
+    sorted_numbers = sorted(numbers)
+    length = len(sorted_numbers)
+    if length % 2 == 0:
+        mid_index = length // 2
+        median = (sorted_numbers[mid_index - 1] + sorted_numbers[mid_index]) / 2
+    else:
+        mid_index = length // 2
+        median = sorted_numbers[mid_index]
+        return median
+numbers = (4,7,6,9,4)
+result = find_median(numbers)
+print(result)
+
+from collections import Counter
+def top3(st):
+    counter_top3 = Counter(st.replace(' ', '')).most_common(3)
+    return ', '.join([f'{letter} - {cnt}' for letter, cnt in counter_top3])
+print(top3('Не следует, однако, забывать о'))
+
+def camel(st):
+    result = ""
+    count = 0
+    for char in st:
+        if char.isalpha():
+            if count % 2 == 0:
+                result += char.upper()
+            else:
+                result += char.lower()
+            count += 1
+        else:
+            result += char
+    return result
+print(camel('я люблю маму'))
+
+def shortener(st):
+    result = ''
+    stack = []
+    for char in st:
+        if char == '(':
+            stack.append('(')
+        elif char == ')':
+            while stack and stack[-1] != '(':
+                stack.pop()
+            stack.pop()
+        elif not stack:
+            result += char
+    return result
+print(shortener('что(вопрос) такое(просто слово) овощ(фрукт)'))
+
+def cleaned_str(st):
+    clean_lst = []
+    for symbol in st:
+        if symbol == '@' and clean_lst:
+            clean_lst.pop()
+        elif symbol != '@':
+            clean_lst.append(symbol)
+    return ''.join(clean_lst)
+print(cleaned_str('п@х@ук@ ор@эх@'))
